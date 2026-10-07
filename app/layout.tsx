@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/navigation";
+import BakeryMark from "./components/bakery-mark";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tech Jokes — A little break from serious code",
-  description: "A little tech humor for your day. Browse jokes and make yourself at home.",
+  title: "Whisk Takers — Cook up a joke",
+  description: "Cook up AI jokes and rate fresh creations and classic laughs with Like or Boo.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -29,8 +30,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navigation />
         {children}
         <footer className="site-footer">
-          <span>Tech Jokes<span className="brand-dot">.</span></span>
-          <span>A little less serious. A little more human.</span>
+          <span>Whisk Takers<span className="brand-dot">.</span></span>
+          <span className="footer-note">Baked with questionable judgment. <span className="footer-secret" tabIndex={0} aria-label="Whisk: Do not lick the production database."><BakeryMark /><span className="secret-tooltip" role="tooltip">Do not lick the production database.</span></span></span>
         </footer>
       </body>
     </html>

@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/login", request.url), 303);
   }
 
   const formData = await request.formData();
@@ -57,12 +57,17 @@ export async function POST(request: Request) {
     updates.avatar_url = avatar_url;
   }
 
-  await supabase
+  const { error: updateError } = await supabase
     .from("profiles")
     .update(updates)
     .eq("id", user.id);
 
+  if (updateError) {
+    return new Response("Couldn’t save your profile. Please try again.", { status: 500 });
+  }
+
   return NextResponse.redirect(
-    new URL("/profile", request.url)
+    new URL("/profile", request.url),
+    303
   );
 }
