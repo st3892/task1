@@ -8,8 +8,9 @@ import { createClient } from "../../lib/client";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/secret", label: "Voting" },
-  { href: "/profile", label: "Profile" },
+  { href: "/generate", label: "Bake a Joke" },
+  { href: "/secret", label: "Taste Test" },
+  { href: "/profile", label: "My Cookbook" },
 ];
 
 export default function Navigation() {

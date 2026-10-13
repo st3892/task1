@@ -18,7 +18,7 @@ export default async function Generations() {
       {error ? (
         <div className="card empty-state" role="alert"><h3>Couldn’t load the creations</h3><p>Please try again in a little while.</p></div>
       ) : generations?.length ? (
-        <div className="jokes-section"><div className="section-heading"><h2>Fresh from the oven</h2><Link className="button button-secondary button-small" href="/secret">Go to Voting</Link></div><ul className="joke-grid">
+        <div className="jokes-section"><div className="section-heading"><h2>Fresh from the oven</h2><Link className="button button-secondary button-small" href="/secret">Taste Test</Link></div><ul className="joke-grid">
           {generations.map((generation) => (
             <li key={generation.id} className="card generation-card recipe-card">
               <span className="recipe-label">HOUSE SPECIAL · FRESHLY WHIPPED</span><p className="generation-text">{generation.generated_text}</p>

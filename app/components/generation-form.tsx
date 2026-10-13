@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "../../lib/client";
 import CherryTop from "./cherry-top";
+import { MODERATION_MESSAGE } from "../../lib/prompt-moderation";
 
 export default function GenerationForm() {
   const router = useRouter();
@@ -71,7 +72,9 @@ export default function GenerationForm() {
         return;
       }
       if (!response.ok) {
-        setError(result.error || "Couldn’t cook up your joke. Please try again.");
+        setError(result.error === "inappropriate_prompt" || result.code === "PROMPT_MODERATION_REJECTED"
+          ? MODERATION_MESSAGE
+          : result.error || "Couldn’t cook up your joke. Please try again.");
         return;
       }
 

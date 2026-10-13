@@ -15,6 +15,46 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* A welcome counter with three places to pull up a chair. */
+.landing-shell.page-shell { padding-top: 24px; padding-bottom: 28px; }
+.landing-heading.bakery-heading { margin: 0 auto 24px; }
+.landing-heading.bakery-heading h1 { font-size: clamp(32px, 3.5vw, 44px); line-height: 1.1; }
+.landing-heading > .eyebrow { margin-bottom: 8px; }
+.landing-whisk { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; margin-bottom: 8px; border: 1px solid #e7c4c5; border-radius: 50%; background: #fae9e7; color: var(--accent); transform: rotate(-12deg); }
+.landing-whisk svg { width: 26px; height: 26px; }
+.landing-heading.bakery-heading p { max-width: 490px; margin-top: 12px; font-size: 14px; line-height: 1.55; }
+.landing-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.landing-card { display: flex; flex-direction: column; min-width: 0; padding: 16px 24px 20px; border: 1px solid var(--border); border-bottom-width: 5px; border-radius: 40px 40px 20px 20px; color: var(--foreground); box-shadow: 0 8px 22px #58342608; transition: transform .2s, box-shadow .2s; }
+.landing-bake { background: #fff0ef; border-color: #e2bdc1; }
+.landing-taste { background: #fff5e3; border-color: #e0c69f; }
+.landing-cookbook { background: #eff2e6; border-color: #c5ceb1; }
+.landing-art { align-self: center; width: 100%; max-width: 180px; height: 100px; margin-bottom: 6px; }
+.landing-card .eyebrow { font-size: 9px; letter-spacing: .12em; margin-bottom: 8px; }
+.landing-card h2 { font-size: 27px; }
+.landing-card p { margin: 10px 0 16px; color: #67524a; font-size: 14px; line-height: 1.55; }
+.landing-card-action { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; margin-top: auto; border-top: 1px solid #765c4930; font-size: 13px; font-weight: 650; }
+.landing-card-action > span { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #fffdf9; color: var(--accent); font-size: 19px; }
+.landing-card:hover, .landing-card:focus-visible { transform: translateY(-5px); box-shadow: 0 12px 26px #58342615; }
+@media (max-width: 1000px) {
+  .site-header .nav-inner { flex-wrap: wrap; gap: 14px; }
+  .site-header .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 4px; }
+  .site-header .nav-link { padding: 9px 13px; }
+  .landing-cards { gap: 16px; }
+  .landing-card { padding: 16px 20px 20px; }
+  .landing-card h2 { font-size: 25px; }
+}
+@media (max-width: 760px) {
+  .landing-cards { grid-template-columns: 1fr; max-width: 480px; margin: auto; }
+  .landing-heading.bakery-heading { margin-bottom: 24px; }
+  .landing-card { padding: 16px 24px 20px; }
+  .landing-art { height: 100px; margin-bottom: 6px; }
+  .landing-card h2 { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-card { transition: none; }
+  .landing-card:hover, .landing-card:focus-visible { transform: none; }
+}
+
 /* Shared layout and controls */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
