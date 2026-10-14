@@ -263,6 +263,50 @@ a { color: inherit; }
 .cherry-message { position: absolute; top: -48px; left: 50%; transform: translateX(-50%); width: 280px; text-align: center; font-size: 11px; color: var(--accent); background: #fffdf9; border-radius: 12px; }
 .cherry-message:empty { display: none; }
 .cooking-status { text-align: center; color: var(--accent); font-size: 13px; }
+.generator-kitchen { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); align-items: start; gap: 24px; }
+.generator-station { min-width: 0; }
+.generator-kitchen .generation-form { margin-bottom: 0; padding-left: 32px; padding-right: 32px; }
+.sprinkle-game { margin-top: 0; padding: 24px; border: 1px solid #e4d4c1; border-top: 5px solid #bdc9a7; border-radius: 22px; background: #fffaf0; }
+.sprinkle-game-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 8px; }
+.sprinkle-game .eyebrow { margin-bottom: 5px; font-size: 9px; }
+.sprinkle-game h3 { font-size: 18px; }
+.sprinkle-score { color: #67524a; font-size: 13px; }
+.sprinkle-score strong { color: var(--accent); font-variant-numeric: tabular-nums; }
+.sprinkle-scoreboard { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin: 16px 0 10px; }
+.sprinkle-game-controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.sprinkle-game-controls .button { flex: 1; min-height: 44px; }
+.sprinkle-time strong { white-space: nowrap; }
+.sprinkle-round-note { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 1; padding: 5px 14px; border-radius: 20px; background: #fffdf9; color: #67524a; font-size: 14px; white-space: nowrap; }
+.sprinkle-tray { position: relative; height: 180px; margin-top: 10px; border: 1px dashed #d8c5af; border-radius: 14px; overflow: hidden; background: linear-gradient(#fffdf9, #faeee5); touch-action: pan-y; cursor: crosshair; }
+.sprinkle-tray:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.falling-sprinkle { position: absolute; width: 5px; height: 12px; border-radius: 4px; pointer-events: none; }
+.sprinkle-golden { width: 8px; height: 18px; background: #e9b632; border: 1px solid #946b18; box-shadow: 0 0 0 3px #f5d87855; }
+.sprinkle-onion { width: 24px; height: 28px; border-radius: 0; }
+.sprinkle-onion svg { display: block; width: 100%; height: 100%; }
+.sprinkle-ew { position: absolute; top: 49%; left: 50%; transform: translateX(-50%); padding: 4px 12px; border-radius: 20px; background: #fae1e6; color: #943248; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.sprinkle-bowl-ew { animation: sprinkle-wobble .35s ease; }
+.sprinkle-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 10px; color: #67524a; font-size: 11px; }
+.sprinkle-legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.legend-sprinkle, .legend-golden { display: inline-block; width: 4px; height: 10px; border-radius: 3px; background: #e78caa; transform: rotate(25deg); }
+.legend-golden { width: 6px; background: #e9b632; border: 1px solid #946b18; }
+@keyframes sprinkle-wobble { 0%, 100% { transform: translateX(-50%) rotate(0); } 25%, 75% { transform: translateX(-50%) rotate(-7deg); } 50% { transform: translateX(-50%) rotate(7deg); } }
+.sprinkle-bowl { position: absolute; top: 76%; width: 22%; height: 32px; transform: translateX(-50%); border: 2px solid #597050; border-radius: 4px 4px 38px 38px; background: #bdc9a7; pointer-events: none; box-shadow: 0 4px 0 #e4d2ba; }
+.sprinkle-bowl > span { position: absolute; top: -4px; left: -3px; right: -3px; height: 8px; border: 2px solid #597050; border-radius: 50%; background: #edf2e5; }
+.sprinkle-chef-note { margin-top: 8px; text-align: center; font-size: 11px; color: #943248; }
+.sprinkle-static { padding: 16px 0 4px; color: #67524a; font-size: 13px; }
+@media (max-width: 900px) {
+  .generator-kitchen { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .generator-kitchen .sprinkle-game { width: 100%; max-width: 650px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .generator-kitchen .generation-form { padding-left: 24px; padding-right: 24px; }
+  .sprinkle-game { padding: 12px; }
+  .sprinkle-game-heading { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sprinkle-tray, .sprinkle-score, .sprinkle-chef-note { display: none; }
+  .sprinkle-bowl-ew { animation: none; }
+}
 .generation-form > p[role="alert"] { background: #fae9e7; padding: 12px 16px; border-radius: 12px; color: #943248; }
 .generation-form > p[role="status"] { text-align: center; }
 .recipe-card, .tasting-card { border-top: 5px solid #ead3b8; transition: transform .2s, box-shadow .2s; animation: baked-in .35s ease both; }

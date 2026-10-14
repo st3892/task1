@@ -46,7 +46,7 @@ export default async function ProfilePage() {
               <div className="form-field"><label htmlFor="last_name">Chef’s last name</label><input id="last_name" type="text" name="last_name" autoComplete="family-name" placeholder="Last name" defaultValue={profile?.last_name ?? ""} /></div>
             </div>
             <div className="form-field"><label htmlFor="profile-email">Email address</label><input id="profile-email" type="email" value={user.email ?? ""} readOnly aria-describedby="email-help" /><p id="email-help" className="field-help">Connected through your Google account.</p></div>
-            <div className="form-field"><label htmlFor="avatar">Kitchen portrait</label><div className="upload-field"><input id="avatar" type="file" name="avatar" accept="image/jpeg,image/png,image/webp" aria-describedby="avatar-help" /><p id="avatar-help" className="field-help">Choose a JPG, PNG, or WebP image.</p></div></div>
+            <div className="form-field"><label htmlFor="avatar">Kitchen portrait</label><div className="upload-field"><input id="avatar" type="file" name="avatar" accept="image/jpeg,image/png,image/webp" aria-describedby="avatar-help" /><p id="avatar-help" className="field-help">Choose a JPG, PNG, or WebP image up to 5 MB.</p></div></div>
             <div className="form-actions"><button className="button" type="submit">Save my details <span aria-hidden="true">↗</span></button></div>
           </form>
         </section>

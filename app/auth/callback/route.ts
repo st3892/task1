@@ -7,7 +7,12 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient();
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      return NextResponse.json({ error: "Sign-in didn’t finish. Please return to Sign in and try again." }, { status: 400 });
+    }
+  } else {
+    return NextResponse.json({ error: "Sign-in didn’t finish. Please return to Sign in and try again." }, { status: 400 });
   }
 
   return NextResponse.redirect(new URL("/", request.url));

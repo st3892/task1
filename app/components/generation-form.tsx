@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "../../lib/client";
@@ -14,6 +14,7 @@ export default function GenerationForm() {
   const [saved, setSaved] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [cookingMessage, setCookingMessage] = useState("Cooking...");
+  const submitting = useRef(false);
 
   useEffect(() => {
     const supabase = createClient();
@@ -44,6 +45,7 @@ export default function GenerationForm() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting.current) return;
     const form = event.currentTarget;
     const formData = new FormData(form);
     const prompt = String(formData.get("prompt") ?? "");
@@ -56,6 +58,7 @@ export default function GenerationForm() {
       return;
     }
 
+    submitting.current = true;
     setPending(true);
     const messages = ["Preheating the humor engine…", "Arguing with the oven…", "Adding unnecessary garnish…", "Checking if this joke is fully baked…"];
     setCookingMessage(Math.random() < 0.2 ? messages[Math.floor(Math.random() * messages.length)] : "Cooking...");
@@ -84,6 +87,7 @@ export default function GenerationForm() {
     } catch {
       setError("Couldn’t cook up your joke. Please check your connection and try again.");
     } finally {
+      submitting.current = false;
       setPending(false);
     }
   }

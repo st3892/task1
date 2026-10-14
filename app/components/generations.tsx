@@ -1,6 +1,7 @@
 import { createClient } from "../../lib/server";
 import Link from "next/link";
 import GenerationForm from "./generation-form";
+import CatchTheSprinkles from "./catch-the-sprinkles";
 
 export default async function Generations() {
   const supabase = await createClient();
@@ -14,7 +15,12 @@ export default async function Generations() {
 
   return (
     <section aria-label="AI joke kitchen">
-      {!authError && user ? <GenerationForm /> : <div className="card empty-state"><h2>Sign in to cook up an AI creation.</h2><p>Your next great joke starts with one idea.</p><Link className="button" href="/login">Sign in</Link></div>}
+      <div className="generator-kitchen">
+        <div className="generator-station">
+          {!authError && user ? <GenerationForm /> : <div className="card empty-state"><h2>Sign in to cook up an AI creation.</h2><p>Your next great joke starts with one idea.</p><Link className="button" href="/login">Sign in</Link></div>}
+        </div>
+        <CatchTheSprinkles />
+      </div>
       {error ? (
         <div className="card empty-state" role="alert"><h3>Couldn’t load the creations</h3><p>Please try again in a little while.</p></div>
       ) : generations?.length ? (
